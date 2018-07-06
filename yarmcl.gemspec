@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
   s.files       = Dir["{lib}/**/*.rb", "LICENSE", "README.md"]
   s.homepage    = "https://github.com/nulogy/yarmcl"
 
+  s.add_dependency "require_all", "~> 2.0"
+
   s.add_development_dependency "bundler", "~> 1.16"
   s.add_development_dependency "rake", "~> 12.3"
   s.add_development_dependency "rspec", "~> 3.7"
