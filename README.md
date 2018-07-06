@@ -1,5 +1,5 @@
 # YARMCL
-> YetAnotherRubyModelCatalogLibrary
+> YARMCL's Another Ruby Model Catalog Library
 
 ## License
 
