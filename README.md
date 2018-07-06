@@ -1,2 +1,6 @@
-# yarmcl
-YetAnotherRubyModelCatalogLibrary
+# YARMCL
+> YetAnotherRubyModelCatalogLibrary
+
+## License
+
+[MIT LICENSE](./LICENSE)
