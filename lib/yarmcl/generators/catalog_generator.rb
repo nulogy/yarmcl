@@ -6,9 +6,7 @@ module YARMCL
         @generator_library = generator_library
       end
 
-      def generate_catalog
-        
-      end
+      def generate_catalog; end
 
       private
 
