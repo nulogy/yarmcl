@@ -11,24 +11,26 @@ module YARMCL
       let(:product_generator) { ProductGenerator.new }
 
       it "generates simple product model" do
-        catalog_generator.generate_catalog
+        catalog = catalog_generator.generate_catalog
 
-        expect(product_generator.products.length).to eq(1)
+        expect(catalog).to include(
+          products: an_object_having_attributes(
+            coke_zero: a_hash_including(
+              code: "CKE-ZRO",
+              brand: "Coke Zero",
+              customer: "Coca-Cola",
+              description: a_string_matching("Aspartame!")
+            )
+          )
+        )
       end
     end
 
     class ProductGenerator < SimpleGenerator
-      attr_reader :products
-
-      def initialize
-        super
-        @products = []
-      end
-
       private
 
       def generate_instance(product_definition)
-        products.push(product_definition)
+        product_definition.transform_keys(&:to_sym)
       end
 
       def instance_definitions
