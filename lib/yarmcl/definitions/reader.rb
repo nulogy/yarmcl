@@ -1,6 +1,10 @@
+require "psych"
+
 module YARMCL
   module Definitions
-    class Reader
+    module Reader
+      module_function
+
       def read(*path_elements)
         definitions_file = File.join(*path_elements)
 

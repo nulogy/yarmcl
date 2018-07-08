@@ -7,7 +7,7 @@ module YARMCL
   module Generators
     RSpec.describe "Catalog Generator" do
       let(:catalog_generator) { CatalogGenerator.new(generator_library) }
-      let(:generator_library) { { product: product_generator } }
+      let(:generator_library) { { products: product_generator } }
       let(:product_generator) { ProductGenerator.new }
 
       it "generates simple product model" do
@@ -21,7 +21,8 @@ module YARMCL
       attr_reader :products
 
       def initialize
-        @products = ["TODO, I SHOULD BE AN EMPTY ARRAY"]
+        super
+        @products = []
       end
 
       private
@@ -31,7 +32,7 @@ module YARMCL
       end
 
       def instance_definitions
-        data_definition.read("catalog", "product.yml")
+        data_reader.read(__dir__, "catalog", "product.yml")
       end
     end
   end

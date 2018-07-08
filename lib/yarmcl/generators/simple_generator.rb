@@ -1,8 +1,15 @@
+require "ostruct"
+
 module YARMCL
   module Generators
     class SimpleGenerator < GeneratorBase
       def generate
-        puts "I don't do anything yet"
+        OpenStruct.new.tap do |instances|
+          instance_definitions.each do |instance_definition|
+            tag = instance_definition.delete("tag")
+            instances.send("#{tag}=", generate_instance(instance_definition))
+          end
+        end
       end
 
       private
