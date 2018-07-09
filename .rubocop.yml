@@ -5,6 +5,10 @@ AllCops:
   Exclude:
     - "bin/*"
 
+Metrics:
+  Exclude:
+    - spec/**/*_spec.rb
+
 Style/Documentation:
   Enabled: false
 
