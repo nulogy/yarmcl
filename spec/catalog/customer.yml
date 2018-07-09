@@ -1,3 +1,4 @@
-- tag: coca_cola
-  name: Coca-Cola
-  city: Atlanta
+data:
+  coca_cola:
+    name: Coca-Cola
+    city: Atlanta
