@@ -16,28 +16,32 @@ module YARMCL
       let(:product_generator) { ProductGenerator.new }
       let(:customer_generator) { CustomerGenerator.new }
 
-      it "generates simple product model" do
-        catalog = generate_catalog
+      describe "generating an entire catalog" do
+        let(:catalog) { catalog_generator.generate_catalog }
 
-        expect(catalog.keys).to contain_exactly(:customers, :products)
-        expect(catalog[:products]).to have_attributes(
-          coke_zero: a_hash_including(
-            code: "CKE-ZRO",
-            brand: "Coke Zero",
-            customer: "Coca-Cola",
-            description: a_string_matching("Aspartame!")
-          )
-        )
-        expect(catalog[:customers]).to have_attributes(
-          coca_cola: a_hash_including(
-            name: "Coca-Cola",
-            city: "Atlanta"
-          )
-        )
-      end
+        it "only generates models that we have configured" do
+          expect(catalog.keys).to contain_exactly(:customers, :products)
+        end
 
-      def generate_catalog
-        catalog_generator.generate_catalog
+        it "generates simple customer models" do
+          expect(catalog[:customers]).to have_attributes(
+            coca_cola: a_hash_including(
+              name: "Coca-Cola",
+              city: "Atlanta"
+            )
+          )
+        end
+
+        it "generates product models that have relationships" do
+          expect(catalog[:products]).to have_attributes(
+            coke_zero: a_hash_including(
+              code: "CKE-ZRO",
+              brand: "Coke Zero",
+              customer: "Coca-Cola",
+              description: a_string_matching("Aspartame!")
+            )
+          )
+        end
       end
     end
 
