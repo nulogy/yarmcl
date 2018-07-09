@@ -7,7 +7,9 @@ module YARMCL
       end
 
       def generate_catalog
-        generator_library.transform_values(&:generate)
+        Hash[generator_library.map do |generator_entry|
+          [generator_entry.name, generator_entry.generator.generate]
+        end]
       end
 
       private

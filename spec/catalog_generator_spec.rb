@@ -8,13 +8,13 @@ module YARMCL
     RSpec.describe "Catalog Generator" do
       let(:catalog_generator) { CatalogGenerator.new(generator_library) }
       let(:generator_library) do
-        {
-          products: product_generator,
-          customers: customer_generator
-        }
+        [
+          GeneratorEntry.new(:customers, customer_generator),
+          GeneratorEntry.new(:products, product_generator)
+        ]
       end
-      let(:product_generator) { ProductGenerator.new }
       let(:customer_generator) { CustomerGenerator.new }
+      let(:product_generator) { ProductGenerator.new }
 
       describe "generating an entire catalog" do
         let(:catalog) { catalog_generator.generate_catalog }
